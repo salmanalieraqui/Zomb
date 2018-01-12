@@ -15,6 +15,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -27,6 +28,7 @@ import android.view.Menu;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -40,6 +42,8 @@ import com.facebook.GraphResponse;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -47,6 +51,7 @@ import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -57,6 +62,9 @@ public class MainActivity extends AppCompatActivity
     static  final int REQUEST_LOCATION=1;
     String first_name, last_name, email, id, birthday, gender;
     double latti,longi;
+    EditText et_status;
+    Button btn_update;
+    DatabaseReference databaseUser;
 
 
     @Override
@@ -114,6 +122,42 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
+
+        //Facebook Login code Ends here!!
+
+        // Status Update code Goes Here
+        databaseUser= FirebaseDatabase.getInstance().getReference("FbUsers");
+
+        et_status=(EditText)findViewById(R.id.ET_status);
+        btn_update=(Button)findViewById(R.id.BTN_update);
+        btn_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addUserToDB();
+            }
+        });
+
+
+    }
+
+    private  void addUserToDB(){
+        String userStatus=et_status.getText().toString().trim();
+        if(TextUtils.isEmpty(userStatus) ){
+            userStatus="hey there! i am using zomb";
+        }
+        if(birthday=="")
+        {
+            birthday="Not specified";
+        }
+        if(id =="")
+        {
+            Toast.makeText(this,"Please login first",Toast.LENGTH_LONG).show();
+        }
+        else{
+            User user=new User(first_name,last_name,email,id,birthday,gender,userStatus,latti,longi);
+            databaseUser.child(id).setValue(user);
+            Toast.makeText(this,"User details and status updates",Toast.LENGTH_LONG).show();
+        }
 
     }
 
