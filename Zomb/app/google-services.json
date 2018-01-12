@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "973290278697",
+    "firebase_url": "https://zomb-31c62.firebaseio.com",
+    "project_id": "zomb-31c62",
+    "storage_bucket": "zomb-31c62.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:973290278697:android:6bdd1700fbd4fb10",
+        "android_client_info": {
+          "package_name": "com.appmilitia.zomb.zomb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "973290278697-p1dbm4gd23p6k4e1uul4sq1bduj3qkqt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.appmilitia.zomb.zomb",
+            "certificate_hash": "0dbca1e7dd201245887b006c99ccc55123316d78"
+          }
+        },
+        {
+          "client_id": "973290278697-0al1tavn4tt27m2crviopnfuftfj6pcq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9kxjqWHulDWrdXhtJcRqwS22gQLhN1Ik"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "973290278697-0al1tavn4tt27m2crviopnfuftfj6pcq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
